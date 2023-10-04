@@ -1,8 +1,10 @@
 package com.example.technicalHighlighter.MODLES;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 @Entity
@@ -20,6 +22,9 @@ public class Challenge {
     private String name;
 
 
-
+    @ToString.Exclude
+    @JsonIgnore
+    @ManyToOne
+    private Highlight highlight;
 
 }

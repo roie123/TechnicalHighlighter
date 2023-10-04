@@ -3,6 +3,7 @@ package com.example.technicalHighlighter.MODLES;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -22,10 +23,14 @@ public class Highlight {
     private String linkToPDFFile;
     private String linkToLiveSite;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+
+    @OneToMany(cascade = {CascadeType.ALL} ,mappedBy = "highlight")
     private List<Challenge> challenges;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(cascade = {CascadeType.ALL} ,mappedBy = "highlight")
     private List<Skill> skillsUtilized;
 //   id:number=0;
 //    title:string='';
